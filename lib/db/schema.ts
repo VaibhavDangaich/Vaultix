@@ -31,3 +31,13 @@ export const files = pgTable("files", {
 
     
 })
+export const filesRelations = relations(files, ({ one, many }) => ({
+    parent: one(files, {
+        fields: [files.parentId],
+        references:[files.id]
+    }),
+
+    children:many(files)
+}
+    
+))

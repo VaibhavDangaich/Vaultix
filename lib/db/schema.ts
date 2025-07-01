@@ -1,5 +1,5 @@
 import { pgTable,text,uuid,integer,boolean,timestamp} from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm'
+import { relations } from 'drizzle-orm';
 import path from 'path';
 
 export const files = pgTable("files", {
@@ -8,7 +8,7 @@ export const files = pgTable("files", {
     name: text('name').notNull(),
     path: text('path').notNull(), // /document/project/....
     size: integer('size').notNull(),
-    type: text('type').notNull,
+    type: text('type').notNull(),
     
     //storage info
     fileUrl: text('file_url').notNull(),//url to access file
@@ -26,9 +26,6 @@ export const files = pgTable("files", {
     //Timestamo
     createdAt: timestamp('created_at').defaultNow().notNull(),
     updatedAt:timestamp('updated_at').defaultNow().notNull()
-
-    
-
     
 })
 

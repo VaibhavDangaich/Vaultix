@@ -20,7 +20,7 @@ async function runMigration() {
         
     }
     catch (error) {
-        console.log("error migrating")
+        console.error("error migrating",error)
         process.exit(1);
         
     }

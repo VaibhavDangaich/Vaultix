@@ -110,6 +110,16 @@ function SignUpForm() {
                         </div>
                     )
                 }
+                    <form onSubmit={handleVerificationSubmit}
+                        className='space-y-6'
+                    >
+                        <div className='space-y-2'>
+                            <label htmlFor=''>
+
+                            </label>
+
+                        </div>
+                    </form>
                     
              </CardBody>
                 

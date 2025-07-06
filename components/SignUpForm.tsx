@@ -94,35 +94,66 @@ function SignUpForm() {
 
     if (verifying) {
         return (
-          <Card className='w-full max-w-md border border-default-200 bg-default-50 shadow-xl'>
-            <CardBody className='flex flex-col gap-1 items-center pb-2'>
-              <h1 className=' text-2xl font-bold text-default-900'>
-               Verify your Email
-                    </h1>
-                    <p className='text-default-500 text-center'>
-                        We have sent a verification code to your email
-                    </p>
-                </CardBody>
-                <CardBody className='py-6'>{
-                    verificationError && (
-                        <div className='bg-danger-50 text-danger-700 p-4 rounded-lg mb-6 flex items-center gap-2'>
-                            <p>{verificationError}</p>
-                        </div>
-                    )
-                }
-                    <form onSubmit={handleVerificationSubmit}
-                        className='space-y-6'
-                    >
-                        <div className='space-y-2'>
-                            <label htmlFor=''>
-
-                            </label>
-
-                        </div>
-                    </form>
-                    
-             </CardBody>
-                
+          <Card className="w-full max-w-md border border-default-200 bg-default-50 shadow-xl">
+            <CardBody className="flex flex-col gap-1 items-center pb-2">
+              <h1 className=" text-2xl font-bold text-default-900">
+                Verify your Email
+              </h1>
+              <p className="text-default-500 text-center">
+                We have sent a verification code to your email
+              </p>
+            </CardBody>
+            <CardBody className="py-6">
+              {verificationError && (
+                <div className="bg-danger-50 text-danger-700 p-4 rounded-lg mb-6 flex items-center gap-2">
+                  <p>{verificationError}</p>
+                </div>
+              )}
+              <form onSubmit={handleVerificationSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label
+                    htmlFor="verificationCode"
+                    className="text-sm font-medium text-default-900"
+                  >
+                    Verification Code
+                  </label>
+                  <input
+                    id="verificationCode"
+                    type="text"
+                    placeholder="Enter the 6 digit code"
+                    value={verificationCode}
+                    onChange={(e) => setVerificationCode(e.target.value)}
+                    className="w-full"
+                    autoFocus
+                  ></input>
+                </div>
+                <button
+                  type="submit"
+                  color="primary"
+                  className="w-full"
+                  disabled={isSubmitting} 
+                >
+                  {isSubmitting ? "Verifying..." : "Verify Email"}
+                </button>
+              </form>
+              <div className="mt-6 text-center">
+                <p className="text-sm text-default-500">
+                  Did not recive the code ?{" "}
+                  <button
+                    onClick={async () => {
+                      if (signUp) {
+                        await signUp.prepareEmailAddressVerification({
+                          strategy: "email_code",
+                        });
+                      }
+                    }}
+                    className="text-primary hover:underline font-medium"
+                  >
+                    Resend Code
+                  </button>
+                </p>
+              </div>
+            </CardBody>
           </Card>
         );
     }

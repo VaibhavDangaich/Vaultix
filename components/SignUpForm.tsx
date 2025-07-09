@@ -12,8 +12,8 @@ import {
   AlertCircle,
   Mail,
   Lock,
-  Link,
 } from "lucide-react";
+import Link from "next/link";
 
 //zod sign-up schema
 import { signUpSchema } from '@/schemas/signUpSchema';
@@ -31,6 +31,8 @@ function SignUpForm() {
     const [authError, setAuthError] = useState<string | null>(null);
     const [verificationError,setVerificationError]=useState<string | null>(null)
     const { signUp, isLoaded, setActive } = useSignUp();
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const {
         register,
@@ -189,7 +191,7 @@ function SignUpForm() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={handleSubmit(submitHandler)} className="space-y-6">
             <div className="space-y-2">
               <label
                 htmlFor="email"

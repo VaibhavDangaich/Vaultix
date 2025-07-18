@@ -61,47 +61,40 @@ export default function SignInForm() {
         }
     }
     return (
-      <Card className="w-full max-w-md border border-default-200 bg-default-50 shadow-xl">
+      <Card className="p-6 rounded-2xl bg-gradient-to-br from-purple-500 via-violet-600 to-indigo-700 opacity-60 shadow-lg max-w-md mx-auto backdrop-blur-3xl">
         <CardHeader className="flex flex-col gap-1 items-center pb-2">
-          <h1 className=" text-2xl font-bold text-default-900">
-            Welcome Back!!
-          </h1>
-          <p className="text-default-500 text-center">
+          <h1 className=" text-2xl font-bold text-black">Welcome Back!!</h1>
+          <p className="text-white text-center">
             Sign In to access your secured cloud storage
           </p>
         </CardHeader>
         <Divider></Divider>
         <CardBody className="py-6">
           {authError && (
-            <div className="bg-danger-50 text-danger-700 p-4 rounded-lg mb-6 flex items-center gap-2">
-              <AlertCircle className="h-5 w-5 flex-shrink-0"></AlertCircle>
+            <div className="bg-white text-white p-4 rounded-lg mb-6 flex items-center gap-2">
+              <AlertCircle className="h-5 w-5 flex-shrink-0 text-white"></AlertCircle>
               <p>{authError}</p>
             </div>
           )}
-          <form onSubmit={handleSubmit(submitHandler)} className="space-y-6">
-            <div className="space-y-2">
-              <label
-                htmlFor="email"
-                className="text-sm font-medium text-default-900"
-              >
+          <form onSubmit={handleSubmit(submitHandler)} className="space-y-6 flex flex-col justify-center items-center">
+            <div className="space-y-2 flex items-baseline justify-center gap-4">
+              <label htmlFor="email" className="text-sm font-medium text-white">
                 Email
               </label>
               <Input
                 id="email"
                 type="email"
                 placeholder="john.doe@gmail.com"
-                startContent={
-                  <Mail className="h-4 w-4 text-default-900"></Mail>
-                }
+                startContent={<Mail className="h-4 w-4 text-white"></Mail>}
                 {...register("email")}
-                className="w-full"
+                className="w-full shadow-"
               ></Input>
             </div>
             <div className="space-y-2">
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-baseline gap-4">
                 <label
                   htmlFor="password"
-                  className="text-sm font-medium text-black"
+                  className="text-sm font-medium text-white"
                 >
                   Password
                 </label>
@@ -139,20 +132,19 @@ export default function SignInForm() {
               {isSubmitting ? "signing in..." : "Sign In"}
             </Button>
           </form>
-            </CardBody>
-            <Divider></Divider>
-            <CardFooter className="flex justify-center py-4">
-                <p className="text-sm text-black">
-                    Don't have an account?{" "}
-                    <Link href="/sign-up"
-                        className="text-primary hover:underline font-medium">
-                        Sign Up
-                    </Link>
-                  
-
-                </p>
-
-            </CardFooter>
+        </CardBody>
+        <Divider></Divider>
+        <CardFooter className="flex justify-center py-4">
+          <p className="text-sm text-black">
+            Don't have an account?{" "}
+            <Link
+              href="/sign-up"
+              className="text-primary hover:underline font-medium cursor-pointer"
+            >
+              Sign Up
+            </Link>
+          </p>
+        </CardFooter>
       </Card>
     );
 }

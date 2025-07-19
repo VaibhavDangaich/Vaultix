@@ -19,7 +19,7 @@ import Link from "next/link";
 import { signUpSchema } from '@/schemas/signUpSchema';
 import React, { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
 
 
@@ -107,7 +107,7 @@ function SignUpForm() {
 
     if (verifying) {
         return (
-          <Card className="w-full max-w-md border border-default-200 bg-default-50 shadow-xl">
+          <Card className="p-6 rounded-2xl bg-gradient-to-br from-purple-500 via-violet-600 to-indigo-700 opacity-60 shadow-lg max-w-md mx-auto backdrop-blur-3xl">
             <CardBody className="flex flex-col gap-1 items-center pb-2">
               <h1 className=" text-2xl font-bold text-default-900">
                 Verify your Email
@@ -144,7 +144,7 @@ function SignUpForm() {
                   type="submit"
                   color="primary"
                   className="w-full"
-                  disabled={isSubmitting} 
+                  disabled={isSubmitting}
                 >
                   {isSubmitting ? "Verifying..." : "Verify Email"}
                 </button>

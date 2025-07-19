@@ -76,7 +76,10 @@ export default function SignInForm() {
               <p>{authError}</p>
             </div>
           )}
-          <form onSubmit={handleSubmit(submitHandler)} className="space-y-6 flex flex-col justify-center items-center">
+          <form
+            onSubmit={handleSubmit(submitHandler)}
+            className="space-y-6 flex flex-col justify-center items-center"
+          >
             <div className="space-y-2 flex items-baseline justify-center gap-4">
               <label htmlFor="email" className="text-sm font-medium text-white">
                 Email
@@ -87,7 +90,7 @@ export default function SignInForm() {
                 placeholder="john.doe@gmail.com"
                 startContent={<Mail className="h-4 w-4 text-white"></Mail>}
                 {...register("email")}
-                className="w-full shadow-"
+                className="w-full shadow-inner shadow-black rounded-4xl h-[50px]  pl-4 pt-2 "
               ></Input>
             </div>
             <div className="space-y-2">
@@ -119,7 +122,7 @@ export default function SignInForm() {
                     </Button>
                   }
                   {...register("password")}
-                  className="w-full"
+                  className="w-full shadow-inner shadow-black rounded-4xl h-[50px]  pl-4 pt-2 "
                 ></Input>
               </div>
             </div>

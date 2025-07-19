@@ -10,7 +10,7 @@ export default function Home() {
       </div>
 
       <div className="absolute flex justify-center items-center w-full h-full ">
-        <SignInForm></SignInForm>
+      <SignInForm></SignInForm>
       </div>
     </div>
   );
